@@ -4,99 +4,99 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
 LDFLAGS = -lpthread
 
-# Week 1 targets
-WEEK1_CPU_DIR = week1/cpu_virtualization
-WEEK1_MEM_DIR = week1/memory_virtualization
-WEEK1_THREAD_DIR = week1/threads
+# Note 1 targets
+NOTE1_CPU_DIR = note1/cpu_virtualization
+NOTE1_MEM_DIR = note1/memory_virtualization
+NOTE1_THREAD_DIR = note1/threads
 
-WEEK1_TARGETS = $(WEEK1_CPU_DIR)/cpu $(WEEK1_MEM_DIR)/mem $(WEEK1_THREAD_DIR)/thread
+NOTE1_TARGETS = $(NOTE1_CPU_DIR)/cpu $(NOTE1_MEM_DIR)/mem $(NOTE1_THREAD_DIR)/thread
 
-# Week 3 targets
-WEEK3_PROC_DIR = week3/process_creation
-WEEK3_EXEC_DIR = week3/process_execution
-WEEK3_IO_DIR = week3/io_redirection
-WEEK3_PIPE_DIR = week3/pipes
+# Note 3 targets
+NOTE3_PROC_DIR = note3/process_creation
+NOTE3_EXEC_DIR = note3/process_execution
+NOTE3_IO_DIR = note3/io_redirection
+NOTE3_PIPE_DIR = note3/pipes
 
-WEEK3_TARGETS = $(WEEK3_PROC_DIR)/p1 $(WEEK3_PROC_DIR)/p2 \
-                $(WEEK3_EXEC_DIR)/p3 $(WEEK3_EXEC_DIR)/exec_example \
-                $(WEEK3_IO_DIR)/p4 $(WEEK3_IO_DIR)/redirect_demo \
-                $(WEEK3_PIPE_DIR)/pipe_demo $(WEEK3_PIPE_DIR)/advanced_pipes
+NOTE3_TARGETS = $(NOTE3_PROC_DIR)/p1 $(NOTE3_PROC_DIR)/p2 \
+                $(NOTE3_EXEC_DIR)/p3 $(NOTE3_EXEC_DIR)/exec_example \
+                $(NOTE3_IO_DIR)/p4 $(NOTE3_IO_DIR)/redirect_demo \
+                $(NOTE3_PIPE_DIR)/pipe_demo $(NOTE3_PIPE_DIR)/advanced_pipes
 
 # All targets
-ALL_TARGETS = $(WEEK1_TARGETS) $(WEEK3_TARGETS)
+ALL_TARGETS = $(NOTE1_TARGETS) $(NOTE3_TARGETS)
 
-.PHONY: all week1 week3 clean help
+.PHONY: all note1 note3 clean help
 
 # Default target
 all: $(ALL_TARGETS)
 	@echo "All programs compiled successfully!"
 
-# Week-specific targets
-week1: $(WEEK1_TARGETS)
-	@echo "Week 1 programs compiled successfully!"
+# Note-specific targets
+note1: $(NOTE1_TARGETS)
+	@echo "Note 1 programs compiled successfully!"
 
-week3: $(WEEK3_TARGETS)
-	@echo "Week 3 programs compiled successfully!"
+note3: $(NOTE3_TARGETS)
+	@echo "Note 3 programs compiled successfully!"
 
-# Week 1 targets
-$(WEEK1_CPU_DIR)/cpu: $(WEEK1_CPU_DIR)/cpu.c common.h
+# Note 1 targets
+$(NOTE1_CPU_DIR)/cpu: $(NOTE1_CPU_DIR)/cpu.c common.h
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK1_MEM_DIR)/mem: $(WEEK1_MEM_DIR)/mem.c common.h
+$(NOTE1_MEM_DIR)/mem: $(NOTE1_MEM_DIR)/mem.c common.h
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK1_THREAD_DIR)/thread: $(WEEK1_THREAD_DIR)/thread.c common.h
+$(NOTE1_THREAD_DIR)/thread: $(NOTE1_THREAD_DIR)/thread.c common.h
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
-# Week 3 targets
-$(WEEK3_PROC_DIR)/p1: $(WEEK3_PROC_DIR)/p1.c
+# Note 3 targets
+$(NOTE3_PROC_DIR)/p1: $(NOTE3_PROC_DIR)/p1.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK3_PROC_DIR)/p2: $(WEEK3_PROC_DIR)/p2.c
+$(NOTE3_PROC_DIR)/p2: $(NOTE3_PROC_DIR)/p2.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK3_EXEC_DIR)/p3: $(WEEK3_EXEC_DIR)/p3.c
+$(NOTE3_EXEC_DIR)/p3: $(NOTE3_EXEC_DIR)/p3.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK3_EXEC_DIR)/exec_example: $(WEEK3_EXEC_DIR)/exec_example.c
+$(NOTE3_EXEC_DIR)/exec_example: $(NOTE3_EXEC_DIR)/exec_example.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK3_IO_DIR)/p4: $(WEEK3_IO_DIR)/p4.c
+$(NOTE3_IO_DIR)/p4: $(NOTE3_IO_DIR)/p4.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK3_IO_DIR)/redirect_demo: $(WEEK3_IO_DIR)/redirect_demo.c
+$(NOTE3_IO_DIR)/redirect_demo: $(NOTE3_IO_DIR)/redirect_demo.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK3_PIPE_DIR)/pipe_demo: $(WEEK3_PIPE_DIR)/pipe_demo.c
+$(NOTE3_PIPE_DIR)/pipe_demo: $(NOTE3_PIPE_DIR)/pipe_demo.c
 	$(CC) $(CFLAGS) -o $@ $<
 
-$(WEEK3_PIPE_DIR)/advanced_pipes: $(WEEK3_PIPE_DIR)/advanced_pipes.c
+$(NOTE3_PIPE_DIR)/advanced_pipes: $(NOTE3_PIPE_DIR)/advanced_pipes.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 # Clean target
 clean:
 	@echo "Cleaning build files..."
 	@rm -f $(ALL_TARGETS)
-	@rm -f week3/io_redirection/*.output
-	@rm -f week3/io_redirection/input.txt
+	@rm -f note3/io_redirection/*.output
+	@rm -f note3/io_redirection/input.txt
 	@echo "Clean complete!"
 
 # Help target
 help:
 	@echo "Available targets:"
 	@echo "  all     - Build all programs"
-	@echo "  week1   - Build Week 1 programs only"
-	@echo "  week3   - Build Week 3 programs only"
+	@echo "  note1   - Build Note 1 programs only"
+	@echo "  note3   - Build Note 3 programs only"
 	@echo "  clean   - Remove all compiled programs and output files"
 	@echo "  help    - Show this help message"
 	@echo ""
-	@echo "Week 1 programs:"
-	@echo "  - week1/cpu_virtualization/cpu"
-	@echo "  - week1/memory_virtualization/mem"
-	@echo "  - week1/threads/thread"
+	@echo "Note 1 programs:"
+	@echo "  - note1/cpu_virtualization/cpu"
+	@echo "  - note1/memory_virtualization/mem"
+	@echo "  - note1/threads/thread"
 	@echo ""
-	@echo "Week 3 programs:"
-	@echo "  - week3/process_creation/p1, p2"
-	@echo "  - week3/process_execution/p3, exec_example"
-	@echo "  - week3/io_redirection/p4, redirect_demo"
-	@echo "  - week3/pipes/pipe_demo, advanced_pipes"
+	@echo "Note 3 programs:"
+	@echo "  - note3/process_creation/p1, p2"
+	@echo "  - note3/process_execution/p3, exec_example"
+	@echo "  - note3/io_redirection/p4, redirect_demo"
+	@echo "  - note3/pipes/pipe_demo, advanced_pipes"
