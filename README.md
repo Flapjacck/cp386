@@ -4,6 +4,42 @@ This repository contains practical examples and demonstrations for CP386 Operati
 
 ## Topic Glossary
 
+### Note 5: Scheduling
+
+**[CPU Scheduling](note5/cpu_scheduling/README.md)**
+
+- **Concept**: How OS decides which processes to run when and for how long
+- **Key Algorithms**: FCFS, SJF, STCF, Round Robin
+- **Key APIs**: Process scheduling, time slicing, waiting queues
+- **Demonstration**: Comparing scheduling algorithms with different workloads
+- **Learn**: Turnaround time, response time, quantum size trade-offs, convoy effect
+
+**[Multi-Level Feedback Queue](note5/multilevel_feedback/README.md)**
+
+- **Concept**: Adaptive scheduling that learns from process behavior
+- **Key Features**: Dynamic priority adjustment, prevention of starvation
+- **Key APIs**: Queue management, priority boosting, time accounting
+- **Demonstration**: Interactive vs CPU-bound process handling
+- **Learn**: How OS distinguishes between interactive and CPU-bound jobs
+
+### Note 7: Multiprocessor and Synchronization
+
+**[Multi-CPU Scheduling](note7/multi_cpu_scheduling/README.md)**
+
+- **Concept**: Scheduling in multicore processors, balancing loads across CPUs
+- **Key Approaches**: Single-Queue vs Multi-Queue scheduling, work stealing
+- **Key APIs**: CPU affinity, load balancing
+- **Demonstration**: Cache effects on multiprocessor performance
+- **Learn**: Cache coherence, cache affinity, load balancing techniques
+
+**[Synchronization and Locks](note7/synchronization_locks/README.md)**
+
+- **Concept**: Protecting shared resources in concurrent environments
+- **Key Mechanisms**: Mutex locks, spin locks, ticket locks
+- **Key APIs**: `pthread_mutex_t`, atomic operations
+- **Demonstration**: Race conditions and their solutions
+- **Learn**: Race conditions, critical sections, atomic operations, deadlocks
+
 ### Note 1: Introduction - Virtualization Concepts
 
 **[CPU Virtualization](note1/cpu_virtualization/README.md)**
